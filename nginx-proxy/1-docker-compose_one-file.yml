@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+    environment:
+      - DEFAULT_HOST=localhost.com
+  
+  nginx-proxy_whoami:
+    container_name: nginx-proxy_whoami
+    image: jwilder/whoami
+    environment:
+      - VIRTUAL_HOST=whoami.localhost.com
+
+  nginx-proxy_web1:
+      container_name: nginx-proxy_web1
+      image: nginx:latest
+      environment:
+      - VIRTUAL_HOST=web1.localhost.com

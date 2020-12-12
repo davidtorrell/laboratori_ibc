@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+    nginx-proxy_web1:
+        container_name: nginx-proxy_web1
+        image: nginx:latest
+        environment:
+            - VIRTUAL_HOST=web1.localhost.com
+
+networks:
+    default:
+        external:
+            name: proxy-net

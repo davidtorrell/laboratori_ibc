@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+    environment:
+      - DEFAULT_HOST=localhost.com
+
+networks:
+  default:
+    external:
+      name: proxy-net

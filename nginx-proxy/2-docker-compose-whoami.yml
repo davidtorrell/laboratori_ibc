@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+
+  nginx-proxy_whoami:
+    container_name: nginx-proxy_whoami
+    image: jwilder/whoami
+    environment:
+      - VIRTUAL_HOST=whoami.localhost.com
+
+networks:
+   default:
+      external:
+         name: proxy-net

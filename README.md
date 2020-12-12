@@ -1,4 +1,4 @@
-# Ejemples DOCKER IBC
+# Exemples DOCKER IBC
 
 ## nginx-proxy
 Exemples com crear un proxy invers amb nginx i dos serveis.
